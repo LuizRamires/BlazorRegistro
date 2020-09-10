@@ -1,0 +1,79 @@
+﻿@page "/Registro"
+
+@using Asdrubal.Shared
+
+
+<h1>Registro</h1>
+
+<EditForm Model="@usuario" OnValidSubmit="@Criar">
+    <DataAnnotationsValidator />
+
+    <div class="form-group">
+        <div>
+            <label>Titulo:</label>
+            <InputSelect @bind-Value="usuario.titulo">
+                <option value="Selecione o Titulo">Selecione o Titulo</option>
+                <option value="Sr">Sr</option>
+                <option value="Sra">Sra</option>
+            </InputSelect>
+        </div>
+
+        <div>
+            <label> Nome: </label>
+            <InputText @bind-Value="usuario.nome" />
+        </div>
+
+        <div>
+            <label> Sobrenome: </label>
+            <InputText @bind-Value="usuario.sobrenome" />
+        </div>
+
+        <div>
+            <label> Email: </label>
+            <InputText @bind-Value="usuario.email" />
+            <ValidationMessage For="@(() => usuario.email)" />
+        </div>
+
+        <div>
+            <label> Data: </label>
+            <InputDate @bind-Value="usuario.data" />
+        </div>
+
+        <div>
+            <label> Senha: </label>
+            <input @bind="usuario.senha" type="password" />
+        </div>
+
+        <div>
+            <label> Confirmar Senha: </label>
+            
+            <InputText @bind-Value="usuario.senha" />
+        </div>
+
+        <div>
+            <label> Verificação: </label>
+            <InputCheckbox @bind-Value="usuario.check" />
+        </div>
+    </div>
+
+
+
+    <button class="btn btn-success" type="submit">Salvar</button>
+
+
+</EditForm>
+
+@code
+{
+    Usuario usuario = new Usuario();
+    private void Criar()
+    {
+        Console.WriteLine(usuario.titulo);
+        Console.WriteLine(usuario.nome);
+        Console.WriteLine(usuario.sobrenome);
+        Console.WriteLine(usuario.data);
+        Console.WriteLine(usuario.email);
+        Console.WriteLine(usuario.senha);
+        Console.WriteLine(usuario.check);
+    }
+}
